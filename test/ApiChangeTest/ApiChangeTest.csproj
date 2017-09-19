@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ApiCheck" Version="1.1.82" />
+    <PackageReference Include="ApiCheck.Console" Version="1.1.82" />
+    <PackageReference Include="ApiCheck.NUnit" Version="1.1.82" />
+    <PackageReference Include="xunit" Version="2.3.0-beta5-build3769" />
+    <PackageReference Include="xunit.abstractions" Version="2.0.1" />
+    <PackageReference Include="xunit.runner.console" Version="2.3.0-beta5-build3769" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resource\Microsoft.IdentityModel.Tokens.512.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
