@@ -168,8 +168,8 @@ namespace Microsoft.IdentityModel.Protocols.WsFederation.Tests
                         {
                             Issuer = ReferenceMetadata.Issuer
                         },
-                        Metadata = ReferenceMetadata.MetadataNoSecurityTokenSeviceEndpointInRoleDescriptor,
-                        TestId = nameof(ReferenceMetadata.MetadataNoSecurityTokenSeviceEndpointInRoleDescriptor)
+                        Metadata = ReferenceMetadata.MetadataNoPassiveRequestorEndpointInRoleDescriptor,
+                        TestId = nameof(ReferenceMetadata.MetadataNoPassiveRequestorEndpointInRoleDescriptor)
                     },
                     new WsFederationMetadataTheoryData
                     {
@@ -182,6 +182,24 @@ namespace Microsoft.IdentityModel.Protocols.WsFederation.Tests
                         ExpectedException = new ExpectedException(typeof(XmlReadException), "IDX30011:"),
                         Metadata = ReferenceMetadata.MetadataNoAddressInEndpointReference,
                         TestId = nameof(ReferenceMetadata.MetadataNoAddressInEndpointReference)
+                    },
+                    new WsFederationMetadataTheoryData
+                    {
+                        Metadata = ReferenceMetadata.AdfsV2Metadata,
+                        SigingKey = ReferenceMetadata.AdfsV2MetadataSigningKey,
+                        Configuration = ReferenceMetadata.AdfsV2Endpoint
+                    },
+                    new WsFederationMetadataTheoryData
+                    {
+                        Metadata = ReferenceMetadata.AdfsV3Metadata,
+                        SigingKey = ReferenceMetadata.AdfsV3MetadataSigningKey,
+                        Configuration = ReferenceMetadata.AdfsV3Endpoint
+                    },
+                    new WsFederationMetadataTheoryData
+                    {
+                        Metadata = ReferenceMetadata.AdfsV4Metadata,
+                        SigingKey = ReferenceMetadata.AdfsV4MetadataSigningKey,
+                        Configuration = ReferenceMetadata.AdfsV4Endpoint
                     }
                 };
             }
@@ -496,7 +514,7 @@ namespace Microsoft.IdentityModel.Protocols.WsFederation.Tests
 
             public string ReadSecurityTokenEndpointPublic(XmlReader reader)
             {
-                return base.ReadSecurityTokenEndpoint(reader);
+                return base.ReadPassiveRequestorEndpoint(reader);
             }
         }
     }
